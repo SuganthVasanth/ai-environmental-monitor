@@ -8,19 +8,19 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root.tsx'
+import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ShellRouteImport } from './routes/_shell.tsx'
-import { Route as ShellAlertsRouteImport } from './routes/_shell.alerts.tsx'
-import { Route as ShellAnalyticsRouteImport } from './routes/_shell.analytics.tsx'
-import { Route as ShellDashboardRouteImport } from './routes/_shell.dashboard.tsx'
-import { Route as ShellHistoryRouteImport } from './routes/_shell.history.tsx'
-import { Route as ShellIndustrialNodesRouteImport } from './routes/_shell.industrial-nodes.tsx'
-import { Route as ShellLandslideNodesRouteImport } from './routes/_shell.landslide-nodes.tsx'
-import { Route as ShellLiveMapRouteImport } from './routes/_shell.live-map.tsx'
-import { Route as ShellNodeHealthRouteImport } from './routes/_shell.node-health.tsx'
-import { Route as ShellRiverNodesRouteImport } from './routes/_shell.river-nodes.tsx'
-import { Route as ShellSettingsRouteImport } from './routes/_shell.settings.tsx'
+import { Route as ShellRouteImport } from './routes/_shell'
+import { Route as ShellAlertsRouteImport } from './routes/_shell.alerts'
+import { Route as ShellAnalyticsRouteImport } from './routes/_shell.analytics'
+import { Route as ShellDashboardRouteImport } from './routes/_shell.dashboard'
+import { Route as ShellHistoryRouteImport } from './routes/_shell.history'
+import { Route as ShellIndustrialNodesRouteImport } from './routes/_shell.industrial-nodes'
+import { Route as ShellLandslideNodesRouteImport } from './routes/_shell.landslide-nodes'
+import { Route as ShellLiveMapRouteImport } from './routes/_shell.live-map'
+import { Route as ShellNodeHealthRouteImport } from './routes/_shell.node-health'
+import { Route as ShellRiverNodesRouteImport } from './routes/_shell.river-nodes'
+import { Route as ShellSettingsRouteImport } from './routes/_shell.settings'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
