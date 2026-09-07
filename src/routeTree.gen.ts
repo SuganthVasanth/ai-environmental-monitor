@@ -10,33 +10,165 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShellRouteImport } from './routes/_shell'
+import { Route as ShellAlertsRouteImport } from './routes/_shell.alerts'
+import { Route as ShellAnalyticsRouteImport } from './routes/_shell.analytics'
+import { Route as ShellDashboardRouteImport } from './routes/_shell.dashboard'
+import { Route as ShellHistoryRouteImport } from './routes/_shell.history'
+import { Route as ShellIndustrialNodesRouteImport } from './routes/_shell.industrial-nodes'
+import { Route as ShellLandslideNodesRouteImport } from './routes/_shell.landslide-nodes'
+import { Route as ShellLiveMapRouteImport } from './routes/_shell.live-map'
+import { Route as ShellNodeHealthRouteImport } from './routes/_shell.node-health'
+import { Route as ShellRiverNodesRouteImport } from './routes/_shell.river-nodes'
+import { Route as ShellSettingsRouteImport } from './routes/_shell.settings'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShellRoute = ShellRouteImport.update({
+  id: '/_shell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShellAlertsRoute = ShellAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellAnalyticsRoute = ShellAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellDashboardRoute = ShellDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellHistoryRoute = ShellHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellIndustrialNodesRoute = ShellIndustrialNodesRouteImport.update({
+  id: '/industrial-nodes',
+  path: '/industrial-nodes',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellLandslideNodesRoute = ShellLandslideNodesRouteImport.update({
+  id: '/landslide-nodes',
+  path: '/landslide-nodes',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellLiveMapRoute = ShellLiveMapRouteImport.update({
+  id: '/live-map',
+  path: '/live-map',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellNodeHealthRoute = ShellNodeHealthRouteImport.update({
+  id: '/node-health',
+  path: '/node-health',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellRiverNodesRoute = ShellRiverNodesRouteImport.update({
+  id: '/river-nodes',
+  path: '/river-nodes',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellSettingsRoute = ShellSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ShellRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alerts': typeof ShellAlertsRoute
+  '/analytics': typeof ShellAnalyticsRoute
+  '/dashboard': typeof ShellDashboardRoute
+  '/history': typeof ShellHistoryRoute
+  '/industrial-nodes': typeof ShellIndustrialNodesRoute
+  '/landslide-nodes': typeof ShellLandslideNodesRoute
+  '/live-map': typeof ShellLiveMapRoute
+  '/node-health': typeof ShellNodeHealthRoute
+  '/river-nodes': typeof ShellRiverNodesRoute
+  '/settings': typeof ShellSettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alerts': typeof ShellAlertsRoute
+  '/analytics': typeof ShellAnalyticsRoute
+  '/dashboard': typeof ShellDashboardRoute
+  '/history': typeof ShellHistoryRoute
+  '/industrial-nodes': typeof ShellIndustrialNodesRoute
+  '/landslide-nodes': typeof ShellLandslideNodesRoute
+  '/live-map': typeof ShellLiveMapRoute
+  '/node-health': typeof ShellNodeHealthRoute
+  '/river-nodes': typeof ShellRiverNodesRoute
+  '/settings': typeof ShellSettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_shell': typeof ShellRouteWithChildren
+  '/_shell/alerts': typeof ShellAlertsRoute
+  '/_shell/analytics': typeof ShellAnalyticsRoute
+  '/_shell/dashboard': typeof ShellDashboardRoute
+  '/_shell/history': typeof ShellHistoryRoute
+  '/_shell/industrial-nodes': typeof ShellIndustrialNodesRoute
+  '/_shell/landslide-nodes': typeof ShellLandslideNodesRoute
+  '/_shell/live-map': typeof ShellLiveMapRoute
+  '/_shell/node-health': typeof ShellNodeHealthRoute
+  '/_shell/river-nodes': typeof ShellRiverNodesRoute
+  '/_shell/settings': typeof ShellSettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/dashboard'
+    | '/history'
+    | '/industrial-nodes'
+    | '/landslide-nodes'
+    | '/live-map'
+    | '/node-health'
+    | '/river-nodes'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/dashboard'
+    | '/history'
+    | '/industrial-nodes'
+    | '/landslide-nodes'
+    | '/live-map'
+    | '/node-health'
+    | '/river-nodes'
+    | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/_shell'
+    | '/_shell/alerts'
+    | '/_shell/analytics'
+    | '/_shell/dashboard'
+    | '/_shell/history'
+    | '/_shell/industrial-nodes'
+    | '/_shell/landslide-nodes'
+    | '/_shell/live-map'
+    | '/_shell/node-health'
+    | '/_shell/river-nodes'
+    | '/_shell/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ShellRoute: typeof ShellRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +180,117 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_shell': {
+      id: '/_shell'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ShellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_shell/alerts': {
+      id: '/_shell/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof ShellAlertsRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/analytics': {
+      id: '/_shell/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof ShellAnalyticsRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/dashboard': {
+      id: '/_shell/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof ShellDashboardRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/history': {
+      id: '/_shell/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof ShellHistoryRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/industrial-nodes': {
+      id: '/_shell/industrial-nodes'
+      path: '/industrial-nodes'
+      fullPath: '/industrial-nodes'
+      preLoaderRoute: typeof ShellIndustrialNodesRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/landslide-nodes': {
+      id: '/_shell/landslide-nodes'
+      path: '/landslide-nodes'
+      fullPath: '/landslide-nodes'
+      preLoaderRoute: typeof ShellLandslideNodesRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/live-map': {
+      id: '/_shell/live-map'
+      path: '/live-map'
+      fullPath: '/live-map'
+      preLoaderRoute: typeof ShellLiveMapRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/node-health': {
+      id: '/_shell/node-health'
+      path: '/node-health'
+      fullPath: '/node-health'
+      preLoaderRoute: typeof ShellNodeHealthRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/river-nodes': {
+      id: '/_shell/river-nodes'
+      path: '/river-nodes'
+      fullPath: '/river-nodes'
+      preLoaderRoute: typeof ShellRiverNodesRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/settings': {
+      id: '/_shell/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof ShellSettingsRouteImport
+      parentRoute: typeof ShellRoute
+    }
   }
 }
 
+interface ShellRouteChildren {
+  ShellAlertsRoute: typeof ShellAlertsRoute
+  ShellAnalyticsRoute: typeof ShellAnalyticsRoute
+  ShellDashboardRoute: typeof ShellDashboardRoute
+  ShellHistoryRoute: typeof ShellHistoryRoute
+  ShellIndustrialNodesRoute: typeof ShellIndustrialNodesRoute
+  ShellLandslideNodesRoute: typeof ShellLandslideNodesRoute
+  ShellLiveMapRoute: typeof ShellLiveMapRoute
+  ShellNodeHealthRoute: typeof ShellNodeHealthRoute
+  ShellRiverNodesRoute: typeof ShellRiverNodesRoute
+  ShellSettingsRoute: typeof ShellSettingsRoute
+}
+
+const ShellRouteChildren: ShellRouteChildren = {
+  ShellAlertsRoute: ShellAlertsRoute,
+  ShellAnalyticsRoute: ShellAnalyticsRoute,
+  ShellDashboardRoute: ShellDashboardRoute,
+  ShellHistoryRoute: ShellHistoryRoute,
+  ShellIndustrialNodesRoute: ShellIndustrialNodesRoute,
+  ShellLandslideNodesRoute: ShellLandslideNodesRoute,
+  ShellLiveMapRoute: ShellLiveMapRoute,
+  ShellNodeHealthRoute: ShellNodeHealthRoute,
+  ShellRiverNodesRoute: ShellRiverNodesRoute,
+  ShellSettingsRoute: ShellSettingsRoute,
+}
+
+const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ShellRoute: ShellRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
