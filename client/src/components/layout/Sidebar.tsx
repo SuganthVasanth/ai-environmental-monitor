@@ -85,7 +85,7 @@ export function Sidebar({
           {!collapsed && (
             <div className="min-w-0 flex-1">
               <p className="truncate font-display text-sm font-bold tracking-[0.14em] text-foreground">
-                NEERKAAPPAN
+                AI Environment Monitor
               </p>
               <p className="truncate text-xs text-muted-foreground">
                 Environmental Intelligence

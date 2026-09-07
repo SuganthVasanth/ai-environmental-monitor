@@ -1,6 +1,6 @@
-# NEERKAAPPAN Command Center
+# AI Environment Monitor
 
-Build the initial frontend foundation for a React.js web application called NEERKAAPPAN – Environmental Intelligence Network.
+Build the initial frontend foundation for a React.js web application called AI Environment Monitor – Environmental Intelligence Network.
 
 IMPORTANT: This is only the initial UI foundation. Do NOT build all monitoring pages yet. Focus on creating a polished dashboard shell and main overview screen that we can extend later.
 
@@ -76,7 +76,7 @@ Create a collapsible left sidebar.
 
 Logo:
 
-NEERKAAPPAN
+AI Environment Monitor
 Environmental Intelligence
 
 

@@ -4,9 +4,9 @@ import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
 export const Route = createFileRoute("/_shell/river-nodes")({
   head: () => ({
     meta: [
-      { title: "River Nodes — NEERKAAPPAN" },
+      { title: "River Nodes — AI Environment Monitor" },
       { name: "description", content: "Water level, flow and rainfall monitoring nodes." },
-      { property: "og:title", content: "River Nodes — NEERKAAPPAN" },
+      { property: "og:title", content: "River Nodes — AI Environment Monitor" },
       { property: "og:description", content: "Water level, flow and rainfall monitoring nodes." },
     ],
   }),

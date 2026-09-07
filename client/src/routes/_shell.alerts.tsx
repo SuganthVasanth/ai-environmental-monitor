@@ -4,9 +4,9 @@ import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
 export const Route = createFileRoute("/_shell/alerts")({
   head: () => ({
     meta: [
-      { title: "Alerts — NEERKAAPPAN" },
+      { title: "Alerts — AI Environment Monitor" },
       { name: "description", content: "Active and historical environmental alerts." },
-      { property: "og:title", content: "Alerts — NEERKAAPPAN" },
+      { property: "og:title", content: "Alerts — AI Environment Monitor" },
       { property: "og:description", content: "Active and historical environmental alerts." },
     ],
   }),

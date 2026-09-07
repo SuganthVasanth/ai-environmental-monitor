@@ -4,9 +4,9 @@ import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
 export const Route = createFileRoute("/_shell/live-map")({
   head: () => ({
     meta: [
-      { title: "Live Map — NEERKAAPPAN" },
+      { title: "Live Map — AI Environment Monitor" },
       { name: "description", content: "Geospatial view of the simulated environmental sensor mesh." },
-      { property: "og:title", content: "Live Map — NEERKAAPPAN" },
+      { property: "og:title", content: "Live Map — AI Environment Monitor" },
       { property: "og:description", content: "Geospatial view of the simulated environmental sensor mesh." },
     ],
   }),

@@ -4,9 +4,9 @@ import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
 export const Route = createFileRoute("/_shell/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — NEERKAAPPAN" },
+      { title: "Settings — AI Environment Monitor" },
       { name: "description", content: "Network configuration and alert thresholds." },
-      { property: "og:title", content: "Settings — NEERKAAPPAN" },
+      { property: "og:title", content: "Settings — AI Environment Monitor" },
       { property: "og:description", content: "Network configuration and alert thresholds." },
     ],
   }),

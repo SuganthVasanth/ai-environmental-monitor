@@ -4,9 +4,9 @@ import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
 export const Route = createFileRoute("/_shell/node-health")({
   head: () => ({
     meta: [
-      { title: "Node Health — NEERKAAPPAN" },
+      { title: "Node Health — AI Environment Monitor" },
       { name: "description", content: "Device telemetry, battery and uptime for every node." },
-      { property: "og:title", content: "Node Health — NEERKAAPPAN" },
+      { property: "og:title", content: "Node Health — AI Environment Monitor" },
       { property: "og:description", content: "Device telemetry, battery and uptime for every node." },
     ],
   }),
