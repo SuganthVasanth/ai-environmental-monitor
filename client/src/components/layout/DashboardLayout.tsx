@@ -22,10 +22,27 @@ export function DashboardLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  const meta = pageMeta[pathname] ?? {
-    title: "Dashboard",
-    subtitle: "Environmental Intelligence Overview",
+  const getMeta = (path: string) => {
+    if (pageMeta[path]) return pageMeta[path];
+    if (path.startsWith("/river-nodes/")) {
+      const id = path.split("/").pop() ?? "";
+      return { title: `River Node ${id}`, subtitle: "Hydrodynamic telemetry and flood risk profile" };
+    }
+    if (path.startsWith("/industrial-nodes/")) {
+      const id = path.split("/").pop() ?? "";
+      return { title: `Industrial Node ${id}`, subtitle: "Emission levels and gas concentration profile" };
+    }
+    if (path.startsWith("/landslide-nodes/")) {
+      const id = path.split("/").pop() ?? "";
+      return { title: `Landslide Node ${id}`, subtitle: "Slope kinematic stability and sensor fusion profile" };
+    }
+    return {
+      title: "Dashboard",
+      subtitle: "Environmental Intelligence Overview",
+    };
   };
+
+  const meta = getMeta(pathname);
 
   return (
     <div className="min-h-screen bg-background">

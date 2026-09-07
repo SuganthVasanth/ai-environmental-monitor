@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { LiveMap } from "@/pages/LiveMap";
 
 export const Route = createFileRoute("/_shell/live-map")({
   head: () => ({
@@ -10,10 +10,5 @@ export const Route = createFileRoute("/_shell/live-map")({
       { property: "og:description", content: "Geospatial view of the simulated environmental sensor mesh." },
     ],
   }),
-  component: () => (
-    <PlaceholderPage
-      title="Live Map"
-      description="The full geospatial monitoring map will be implemented in a later step."
-    />
-  ),
+  component: LiveMap,
 });

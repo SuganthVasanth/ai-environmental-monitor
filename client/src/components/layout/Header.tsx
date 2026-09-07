@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Bell, Menu } from "lucide-react";
 import { notifications, systemDate } from "@/data/mockData";
 import { StatusBadge } from "@/components/common/StatusBadge";
@@ -59,22 +60,46 @@ export function Header({ title, subtitle, onOpenMobileNav }: HeaderProps) {
             </button>
 
             {open && (
-              <div className="panel absolute right-0 top-12 z-40 w-[min(20rem,calc(100vw-2rem))] p-3">
-                <p className="label-caps px-1 pb-2 text-muted-foreground/70">
-                  Notifications
-                </p>
+              <div className="panel absolute right-0 top-12 z-40 w-[min(22rem,calc(100vw-2rem))] p-3">
+                <div className="flex items-center justify-between px-1 pb-2">
+                  <p className="label-caps text-muted-foreground/70">
+                    Notifications
+                  </p>
+                  <Link
+                    to="/alerts"
+                    onClick={() => setOpen(false)}
+                    className="label-caps text-primary hover:underline text-[10px]"
+                  >
+                    View All
+                  </Link>
+                </div>
                 <ul className="divide-y divide-border">
                   {notifications.map((n) => (
-                    <li key={n.id} className="py-2.5">
-                      <div className="flex items-center gap-2">
-                        <StatusBadge severity={n.severity}>{n.label}</StatusBadge>
-                        <span className="truncate text-sm text-foreground">{n.node}</span>
-                      </div>
-                      <p className="mt-1 text-xs text-muted-foreground">{n.description}</p>
-                      <p className="label-caps mt-1 text-muted-foreground/60">{n.timeAgo}</p>
+                    <li key={n.id} className="py-2.5 hover:bg-background/40 px-1 rounded-md transition-colors">
+                      <Link
+                        to="/alerts"
+                        onClick={() => setOpen(false)}
+                        className="block group"
+                      >
+                        <div className="flex items-center gap-2">
+                          <StatusBadge severity={n.severity}>{n.label}</StatusBadge>
+                          <span className="truncate text-sm text-foreground group-hover:text-primary transition-colors">{n.node}</span>
+                        </div>
+                        <p className="mt-1 text-xs text-muted-foreground">{n.description}</p>
+                        <p className="label-caps mt-1 text-muted-foreground/60">{n.timeAgo}</p>
+                      </Link>
                     </li>
                   ))}
                 </ul>
+                <div className="pt-2.5 mt-1 border-t border-border text-center">
+                  <Link
+                    to="/alerts"
+                    onClick={() => setOpen(false)}
+                    className="block w-full text-center text-xs py-1.5 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium"
+                  >
+                    Open Alert Center
+                  </Link>
+                </div>
               </div>
             )}
           </div>

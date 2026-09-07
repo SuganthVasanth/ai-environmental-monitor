@@ -1,19 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { LandslideNodes } from "@/pages/landslide/LandslideNodes";
 
 export const Route = createFileRoute("/_shell/landslide-nodes")({
   head: () => ({
     meta: [
       { title: "Landslide Nodes — AI Environment Monitor" },
-      { name: "description", content: "Slope stability and ground movement monitoring nodes." },
+      { name: "description", content: "Rainfall, soil moisture, tilt movement and seismic vibration monitoring." },
       { property: "og:title", content: "Landslide Nodes — AI Environment Monitor" },
-      { property: "og:description", content: "Slope stability and ground movement monitoring nodes." },
+      { property: "og:description", content: "Rainfall, soil moisture, tilt movement and seismic vibration monitoring." },
     ],
   }),
-  component: () => (
-    <PlaceholderPage
-      title="Landslide Nodes"
-      description="Detailed landslide node telemetry will be implemented in a later step."
-    />
-  ),
+  component: LandslideNodes,
 });

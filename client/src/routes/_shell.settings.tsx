@@ -1,19 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { Settings } from "@/pages/Settings";
 
 export const Route = createFileRoute("/_shell/settings")({
   head: () => ({
     meta: [
       { title: "Settings — AI Environment Monitor" },
-      { name: "description", content: "Network configuration and alert thresholds." },
+      { name: "description", content: "Command center display preferences, alert notification thresholds, and network parameters." },
       { property: "og:title", content: "Settings — AI Environment Monitor" },
-      { property: "og:description", content: "Network configuration and alert thresholds." },
+      { property: "og:description", content: "Command center display preferences, alert notification thresholds, and network parameters." },
     ],
   }),
-  component: () => (
-    <PlaceholderPage
-      title="Settings"
-      description="Configuration options will be implemented in a later step."
-    />
-  ),
+  component: Settings,
 });

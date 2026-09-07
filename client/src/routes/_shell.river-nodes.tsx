@@ -1,19 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { RiverNodes } from "@/pages/river/RiverNodes";
 
 export const Route = createFileRoute("/_shell/river-nodes")({
   head: () => ({
     meta: [
       { title: "River Nodes — AI Environment Monitor" },
-      { name: "description", content: "Water level, flow and rainfall monitoring nodes." },
+      { name: "description", content: "Water level, flow, and catchment rainfall monitoring nodes." },
       { property: "og:title", content: "River Nodes — AI Environment Monitor" },
-      { property: "og:description", content: "Water level, flow and rainfall monitoring nodes." },
+      { property: "og:description", content: "Water level, flow, and catchment rainfall monitoring nodes." },
     ],
   }),
-  component: () => (
-    <PlaceholderPage
-      title="River Nodes"
-      description="Detailed river node telemetry will be implemented in a later step."
-    />
-  ),
+  component: RiverNodes,
 });

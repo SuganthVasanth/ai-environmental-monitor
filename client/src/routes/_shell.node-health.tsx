@@ -1,19 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { NodeHealth } from "@/pages/NodeHealth";
 
 export const Route = createFileRoute("/_shell/node-health")({
   head: () => ({
     meta: [
       { title: "Node Health — AI Environment Monitor" },
-      { name: "description", content: "Device telemetry, battery and uptime for every node." },
+      { name: "description", content: "Hardware telemetry, battery capacity, LoRa gateway link quality and node diagnostics." },
       { property: "og:title", content: "Node Health — AI Environment Monitor" },
-      { property: "og:description", content: "Device telemetry, battery and uptime for every node." },
+      { property: "og:description", content: "Hardware telemetry, battery capacity, LoRa gateway link quality and node diagnostics." },
     ],
   }),
-  component: () => (
-    <PlaceholderPage
-      title="Node Health"
-      description="Device diagnostics and uptime reporting will be implemented in a later step."
-    />
-  ),
+  component: NodeHealth,
 });

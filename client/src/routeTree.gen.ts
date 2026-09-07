@@ -21,6 +21,9 @@ import { Route as ShellLiveMapRouteImport } from './routes/_shell.live-map'
 import { Route as ShellNodeHealthRouteImport } from './routes/_shell.node-health'
 import { Route as ShellRiverNodesRouteImport } from './routes/_shell.river-nodes'
 import { Route as ShellSettingsRouteImport } from './routes/_shell.settings'
+import { Route as ShellIndustrialNodesIdRouteImport } from './routes/_shell.industrial-nodes.$id'
+import { Route as ShellLandslideNodesIdRouteImport } from './routes/_shell.landslide-nodes.$id'
+import { Route as ShellRiverNodesIdRouteImport } from './routes/_shell.river-nodes.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -81,6 +84,21 @@ const ShellSettingsRoute = ShellSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => ShellRoute,
 } as any)
+const ShellIndustrialNodesIdRoute = ShellIndustrialNodesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ShellIndustrialNodesRoute,
+} as any)
+const ShellLandslideNodesIdRoute = ShellLandslideNodesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ShellLandslideNodesRoute,
+} as any)
+const ShellRiverNodesIdRoute = ShellRiverNodesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ShellRiverNodesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -88,12 +106,15 @@ export interface FileRoutesByFullPath {
   '/analytics': typeof ShellAnalyticsRoute
   '/dashboard': typeof ShellDashboardRoute
   '/history': typeof ShellHistoryRoute
-  '/industrial-nodes': typeof ShellIndustrialNodesRoute
-  '/landslide-nodes': typeof ShellLandslideNodesRoute
+  '/industrial-nodes': typeof ShellIndustrialNodesRouteWithChildren
+  '/landslide-nodes': typeof ShellLandslideNodesRouteWithChildren
   '/live-map': typeof ShellLiveMapRoute
   '/node-health': typeof ShellNodeHealthRoute
-  '/river-nodes': typeof ShellRiverNodesRoute
+  '/river-nodes': typeof ShellRiverNodesRouteWithChildren
   '/settings': typeof ShellSettingsRoute
+  '/industrial-nodes/$id': typeof ShellIndustrialNodesIdRoute
+  '/landslide-nodes/$id': typeof ShellLandslideNodesIdRoute
+  '/river-nodes/$id': typeof ShellRiverNodesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -101,12 +122,15 @@ export interface FileRoutesByTo {
   '/analytics': typeof ShellAnalyticsRoute
   '/dashboard': typeof ShellDashboardRoute
   '/history': typeof ShellHistoryRoute
-  '/industrial-nodes': typeof ShellIndustrialNodesRoute
-  '/landslide-nodes': typeof ShellLandslideNodesRoute
+  '/industrial-nodes': typeof ShellIndustrialNodesRouteWithChildren
+  '/landslide-nodes': typeof ShellLandslideNodesRouteWithChildren
   '/live-map': typeof ShellLiveMapRoute
   '/node-health': typeof ShellNodeHealthRoute
-  '/river-nodes': typeof ShellRiverNodesRoute
+  '/river-nodes': typeof ShellRiverNodesRouteWithChildren
   '/settings': typeof ShellSettingsRoute
+  '/industrial-nodes/$id': typeof ShellIndustrialNodesIdRoute
+  '/landslide-nodes/$id': typeof ShellLandslideNodesIdRoute
+  '/river-nodes/$id': typeof ShellRiverNodesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,12 +140,15 @@ export interface FileRoutesById {
   '/_shell/analytics': typeof ShellAnalyticsRoute
   '/_shell/dashboard': typeof ShellDashboardRoute
   '/_shell/history': typeof ShellHistoryRoute
-  '/_shell/industrial-nodes': typeof ShellIndustrialNodesRoute
-  '/_shell/landslide-nodes': typeof ShellLandslideNodesRoute
+  '/_shell/industrial-nodes': typeof ShellIndustrialNodesRouteWithChildren
+  '/_shell/landslide-nodes': typeof ShellLandslideNodesRouteWithChildren
   '/_shell/live-map': typeof ShellLiveMapRoute
   '/_shell/node-health': typeof ShellNodeHealthRoute
-  '/_shell/river-nodes': typeof ShellRiverNodesRoute
+  '/_shell/river-nodes': typeof ShellRiverNodesRouteWithChildren
   '/_shell/settings': typeof ShellSettingsRoute
+  '/_shell/industrial-nodes/$id': typeof ShellIndustrialNodesIdRoute
+  '/_shell/landslide-nodes/$id': typeof ShellLandslideNodesIdRoute
+  '/_shell/river-nodes/$id': typeof ShellRiverNodesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -137,6 +164,9 @@ export interface FileRouteTypes {
     | '/node-health'
     | '/river-nodes'
     | '/settings'
+    | '/industrial-nodes/$id'
+    | '/landslide-nodes/$id'
+    | '/river-nodes/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -150,6 +180,9 @@ export interface FileRouteTypes {
     | '/node-health'
     | '/river-nodes'
     | '/settings'
+    | '/industrial-nodes/$id'
+    | '/landslide-nodes/$id'
+    | '/river-nodes/$id'
   id:
     | '__root__'
     | '/'
@@ -164,6 +197,9 @@ export interface FileRouteTypes {
     | '/_shell/node-health'
     | '/_shell/river-nodes'
     | '/_shell/settings'
+    | '/_shell/industrial-nodes/$id'
+    | '/_shell/landslide-nodes/$id'
+    | '/_shell/river-nodes/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -257,19 +293,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellSettingsRouteImport
       parentRoute: typeof ShellRoute
     }
+    '/_shell/industrial-nodes/$id': {
+      id: '/_shell/industrial-nodes/$id'
+      path: '/$id'
+      fullPath: '/industrial-nodes/$id'
+      preLoaderRoute: typeof ShellIndustrialNodesIdRouteImport
+      parentRoute: typeof ShellIndustrialNodesRoute
+    }
+    '/_shell/landslide-nodes/$id': {
+      id: '/_shell/landslide-nodes/$id'
+      path: '/$id'
+      fullPath: '/landslide-nodes/$id'
+      preLoaderRoute: typeof ShellLandslideNodesIdRouteImport
+      parentRoute: typeof ShellLandslideNodesRoute
+    }
+    '/_shell/river-nodes/$id': {
+      id: '/_shell/river-nodes/$id'
+      path: '/$id'
+      fullPath: '/river-nodes/$id'
+      preLoaderRoute: typeof ShellRiverNodesIdRouteImport
+      parentRoute: typeof ShellRiverNodesRoute
+    }
   }
 }
+
+interface ShellIndustrialNodesRouteChildren {
+  ShellIndustrialNodesIdRoute: typeof ShellIndustrialNodesIdRoute
+}
+
+const ShellIndustrialNodesRouteChildren: ShellIndustrialNodesRouteChildren = {
+  ShellIndustrialNodesIdRoute: ShellIndustrialNodesIdRoute,
+}
+
+const ShellIndustrialNodesRouteWithChildren =
+  ShellIndustrialNodesRoute._addFileChildren(ShellIndustrialNodesRouteChildren)
+
+interface ShellLandslideNodesRouteChildren {
+  ShellLandslideNodesIdRoute: typeof ShellLandslideNodesIdRoute
+}
+
+const ShellLandslideNodesRouteChildren: ShellLandslideNodesRouteChildren = {
+  ShellLandslideNodesIdRoute: ShellLandslideNodesIdRoute,
+}
+
+const ShellLandslideNodesRouteWithChildren =
+  ShellLandslideNodesRoute._addFileChildren(ShellLandslideNodesRouteChildren)
+
+interface ShellRiverNodesRouteChildren {
+  ShellRiverNodesIdRoute: typeof ShellRiverNodesIdRoute
+}
+
+const ShellRiverNodesRouteChildren: ShellRiverNodesRouteChildren = {
+  ShellRiverNodesIdRoute: ShellRiverNodesIdRoute,
+}
+
+const ShellRiverNodesRouteWithChildren = ShellRiverNodesRoute._addFileChildren(
+  ShellRiverNodesRouteChildren,
+)
 
 interface ShellRouteChildren {
   ShellAlertsRoute: typeof ShellAlertsRoute
   ShellAnalyticsRoute: typeof ShellAnalyticsRoute
   ShellDashboardRoute: typeof ShellDashboardRoute
   ShellHistoryRoute: typeof ShellHistoryRoute
-  ShellIndustrialNodesRoute: typeof ShellIndustrialNodesRoute
-  ShellLandslideNodesRoute: typeof ShellLandslideNodesRoute
+  ShellIndustrialNodesRoute: typeof ShellIndustrialNodesRouteWithChildren
+  ShellLandslideNodesRoute: typeof ShellLandslideNodesRouteWithChildren
   ShellLiveMapRoute: typeof ShellLiveMapRoute
   ShellNodeHealthRoute: typeof ShellNodeHealthRoute
-  ShellRiverNodesRoute: typeof ShellRiverNodesRoute
+  ShellRiverNodesRoute: typeof ShellRiverNodesRouteWithChildren
   ShellSettingsRoute: typeof ShellSettingsRoute
 }
 
@@ -278,11 +369,11 @@ const ShellRouteChildren: ShellRouteChildren = {
   ShellAnalyticsRoute: ShellAnalyticsRoute,
   ShellDashboardRoute: ShellDashboardRoute,
   ShellHistoryRoute: ShellHistoryRoute,
-  ShellIndustrialNodesRoute: ShellIndustrialNodesRoute,
-  ShellLandslideNodesRoute: ShellLandslideNodesRoute,
+  ShellIndustrialNodesRoute: ShellIndustrialNodesRouteWithChildren,
+  ShellLandslideNodesRoute: ShellLandslideNodesRouteWithChildren,
   ShellLiveMapRoute: ShellLiveMapRoute,
   ShellNodeHealthRoute: ShellNodeHealthRoute,
-  ShellRiverNodesRoute: ShellRiverNodesRoute,
+  ShellRiverNodesRoute: ShellRiverNodesRouteWithChildren,
   ShellSettingsRoute: ShellSettingsRoute,
 }
 
