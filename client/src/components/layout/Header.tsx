@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { Bell, Menu } from "lucide-react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { Bell, CheckCheck, Menu } from "lucide-react";
 import { notifications, systemDate } from "@/data/mockData";
 import { StatusBadge } from "@/components/common/StatusBadge";
 
@@ -12,7 +12,16 @@ interface HeaderProps {
 
 export function Header({ title, subtitle, onOpenMobileNav }: HeaderProps) {
   const [open, setOpen] = useState(false);
+  const [hasUnread, setHasUnread] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // If user is currently on the alerts page, clear the unread notification badge
+  useEffect(() => {
+    if (pathname === "/alerts") {
+      setHasUnread(false);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -22,6 +31,23 @@ export function Header({ title, subtitle, onOpenMobileNav }: HeaderProps) {
     document.addEventListener("mousedown", onClick);
     return () => document.removeEventListener("mousedown", onClick);
   }, [open]);
+
+  const handleToggle = () => {
+    setOpen((prev) => {
+      const next = !prev;
+      if (next) {
+        // Viewing the notifications clears the unread dot indicator
+        setHasUnread(false);
+      }
+      return next;
+    });
+  };
+
+  const handleMarkAllRead = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setHasUnread(false);
+  };
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur-md">
@@ -51,34 +77,66 @@ export function Header({ title, subtitle, onOpenMobileNav }: HeaderProps) {
           <div className="relative" ref={ref}>
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={handleToggle}
               aria-label="Notifications"
               className="relative rounded-lg border border-border p-2 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
             >
               <Bell size={17} />
-              <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-critical ring-2 ring-background" />
+              {hasUnread && (
+                <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-critical ring-2 ring-background animate-pulse" />
+              )}
             </button>
 
             {open && (
-              <div className="panel absolute right-0 top-12 z-40 w-[min(22rem,calc(100vw-2rem))] p-3">
-                <div className="flex items-center justify-between px-1 pb-2">
-                  <p className="label-caps text-muted-foreground/70">
-                    Notifications
-                  </p>
-                  <Link
-                    to="/alerts"
-                    onClick={() => setOpen(false)}
-                    className="label-caps text-primary hover:underline text-[10px]"
-                  >
-                    View All
-                  </Link>
+              <div className="panel absolute right-0 top-12 z-40 w-[min(22rem,calc(100vw-2rem))] p-3 shadow-2xl">
+                <div className="flex items-center justify-between px-1 pb-2 border-b border-border mb-1">
+                  <div className="flex items-center gap-2">
+                    <p className="label-caps text-muted-foreground/80">
+                      Notifications
+                    </p>
+                    {hasUnread ? (
+                      <span className="label-caps text-[9px] rounded-full bg-critical/15 text-critical px-1.5 py-0.5 ring-1 ring-critical/30">
+                        New
+                      </span>
+                    ) : (
+                      <span className="label-caps text-[9px] text-muted-foreground/60">
+                        All read
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    {hasUnread && (
+                      <button
+                        type="button"
+                        onClick={handleMarkAllRead}
+                        className="label-caps text-[10px] text-muted-foreground hover:text-foreground flex items-center gap-1"
+                      >
+                        <CheckCheck size={11} />
+                        <span>Read</span>
+                      </button>
+                    )}
+                    <Link
+                      to="/alerts"
+                      onClick={() => {
+                        setHasUnread(false);
+                        setOpen(false);
+                      }}
+                      className="label-caps text-primary hover:underline text-[10px]"
+                    >
+                      View All
+                    </Link>
+                  </div>
                 </div>
+
                 <ul className="divide-y divide-border">
                   {notifications.map((n) => (
                     <li key={n.id} className="py-2.5 hover:bg-background/40 px-1 rounded-md transition-colors">
                       <Link
                         to="/alerts"
-                        onClick={() => setOpen(false)}
+                        onClick={() => {
+                          setHasUnread(false);
+                          setOpen(false);
+                        }}
                         className="block group"
                       >
                         <div className="flex items-center gap-2">
@@ -91,10 +149,14 @@ export function Header({ title, subtitle, onOpenMobileNav }: HeaderProps) {
                     </li>
                   ))}
                 </ul>
+
                 <div className="pt-2.5 mt-1 border-t border-border text-center">
                   <Link
                     to="/alerts"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setHasUnread(false);
+                      setOpen(false);
+                    }}
                     className="block w-full text-center text-xs py-1.5 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium"
                   >
                     Open Alert Center

@@ -1,532 +1,217 @@
-# AI Environment Monitor
-
-Build the initial frontend foundation for a React.js web application called AI Environment Monitor – Environmental Intelligence Network.
-
-IMPORTANT: This is only the initial UI foundation. Do NOT build all monitoring pages yet. Focus on creating a polished dashboard shell and main overview screen that we can extend later.
-
-TECH STACK
-
-Use:
-
-React.js
-
-JavaScript
-
-Vite
-
-Tailwind CSS
-
-React Router
-
-Lucide React
-
-Recharts only if needed for the initial dashboard
-
-Do NOT use Next.js.
-
-Do NOT create a backend, database, MQTT connection, authentication, API integration, or WebSocket yet.
-
-Use mock/static data only.
-
-DESIGN
-
-Create a professional environmental disaster monitoring command center.
-
-Dark theme.
-
-Use this color palette:
-
-Background: #020617
-
-Cards: #0f172a
-
-Primary accent: #22d3ee
-
-Secondary accent: #a855f7
-
-Main text: #e2e8f0
-
-Secondary text: #94a3b8
-
-Borders: #1e293b
-
-The design should look modern, technical, clean and professional.
-
-Avoid making it look like a generic admin dashboard.
-
-Use subtle borders, rounded cards, soft shadows and minimal animations.
-
-APPLICATION STRUCTURE
-
-Create a persistent dashboard layout:
-
-┌─────────────────────────────────────────────────────────────┐
-│ TOP HEADER                                                  │
-├──────────────┬──────────────────────────────────────────────┤
-│              │                                              │
-│   SIDEBAR    │                 MAIN CONTENT                 │
-│              │                                              │
-│              │                                              │
-└──────────────┴──────────────────────────────────────────────┘
-
-
-SIDEBAR
-
-Create a collapsible left sidebar.
-
-Logo:
-
-AI Environment Monitor
-Environmental Intelligence
-
-
-Add a small green status indicator:
-
-● SYSTEM OPERATIONAL
-
-
-Navigation:
-
-OVERVIEW
-
-⌂ Dashboard
-
-MONITORING
-
-🗺 Live Map
-🌊 River Nodes
-🏭 Industrial Nodes
-⛰ Landslide Nodes
-
-MANAGEMENT
-
-🚨 Alerts
-📊 Analytics
-📡 Node Health
-📜 History
-
-SYSTEM
-
-⚙ Settings
-
-
-For now, only the Dashboard page needs to be fully implemented.
-
-Other navigation items should exist visually and have routes/placeholders so we can implement them later.
-
-Sidebar requirements:
-
-Active Dashboard state
-
-Collapsible on desktop
-
-Mobile drawer
-
-Lucide icons
-
-Smooth transitions
-
-Professional spacing
-
-TOP HEADER
-
-Create a top header containing:
-
-Left:
-
-Dashboard
-Environmental Intelligence Overview
-
-
-Right:
-
-● Live System
-🔔
-Sep 7, 2026
-
-
-Make the notification icon clickable and show a small notification dropdown containing a few mock alerts.
-
-DASHBOARD
-
-Route:
-
-/dashboard
-
-
-Redirect / to /dashboard.
-
-Header:
-
-Environmental Intelligence Overview
-
-Monitor environmental conditions, node health and active risks.
-
-
-SUMMARY CARDS
-
-Create four high-quality summary cards:
-
-Total Nodes
-
-35
-31 Online
-
-
-Icon: network/sensors
-
-Active Alerts
-
-6
-2 Critical
-
-
-Icon: alert triangle
-
-Critical Nodes
-
-3
-Requires Attention
-
-
-Icon: shield warning
-
-System Health
-
-94.8%
-Operational
-
-
-Icon: activity/pulse
-
-Each card should include:
-
-Icon
-
-Large number
-
-Label
-
-Supporting text
-
-Small trend/status indicator
-
-NODE TYPE CARDS
-
-Below the summary cards create three large cards.
-
-RIVER
-
-🌊 RIVER MONITORING
-
-12 Nodes
-10 Online
-
-1 Warning
-1 Critical
-
-Flood Risk
-72%
-
-
-Button:
-
-View River Nodes →
-
-
-INDUSTRIAL
-
-🏭 INDUSTRIAL MONITORING
-
-8 Nodes
-8 Online
-
-2 Warning
-0 Emergency
-
-Pollution Risk
-41%
-
-
-Button:
-
-View Industrial Nodes →
-
-
-LANDSLIDE
-
-⛰ LANDSLIDE MONITORING
-
-15 Nodes
-13 Online
-
-1 Warning
-1 High Risk
-
-Landslide Risk
-27%
-
-
-Button:
-
-View Landslide Nodes →
-
-
-Use distinct visual icons and subtle accent treatments.
-
-LIVE RISK MAP PLACEHOLDER
-
-For this first version, create a large Live Environmental Risk Map section.
-
-If Leaflet can be implemented cleanly without additional configuration, use Leaflet.
-
-Otherwise create a polished map-style placeholder that looks like a real monitoring map.
-
-Show fictional/demo node markers:
-
-🟢 River
-🟡 River
-🔴 Industrial
-🟠 Industrial
-🟢 Landslide
-
-
-Add a legend:
-
-● Normal
-● Watch
-● Warning
-● Critical
-
-
-Clearly label:
-
-DEMO DATA
-
-
-Do NOT imply these are real deployed locations.
-
-RISK OVERVIEW
-
-Create a card titled:
-
-Risk Overview
-
-
-Display:
-
-Flood Risk
-██████████████░░░░ 72%
-
-Industrial Pollution
-████████░░░░░░░░░░ 41%
-
-Landslide Risk
-█████░░░░░░░░░░░░░ 27%
-
-
-Use appropriate severity styling.
-
-RECENT ALERTS
-
-Create a card titled:
-
-Recent Alerts
-
-
-Show 4 mock alerts:
-
-🔴 HIGH
-Landslide Node 04
-Increased rainfall and movement indicators
-2 minutes ago
-
-
-🟠 WARNING
-River Node 07
-Rapid water-level increase
-5 minutes ago
-
-
-🟡 WATCH
-Industrial Node 03
-PM2.5 above recent baseline
-12 minutes ago
-
-
-🟡 WATCH
-River Node 02
-Rainfall increasing
-18 minutes ago
-
-
-Each alert should have:
-
-Severity indicator
-
-Node name
-
-Description
-
-Timestamp
-
-View action
-
-RESPONSIVENESS
-
-The dashboard must work well on:
-
-Desktop
-
-Laptop
-
-Tablet
-
-Mobile
-
-On mobile:
-
-Sidebar becomes a drawer
-
-Summary cards stack
-
-Node cards stack
-
-Map becomes full width
-
-Alerts become full width
-
-No horizontal overflow
-
-COMPONENT STRUCTURE
-
-Do NOT put everything into App.tsx.
-
-Create reusable components such as:
-
-src/
+# AI Environment Monitor — Environmental Intelligence Network
+
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8.1-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![TanStack Router](https://img.shields.io/badge/TanStack_Router-1.170-FF4154?logo=react&logoColor=white)](https://tanstack.com/router)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+An enterprise-grade environmental disaster early warning and intelligence command center web application. Designed for mission-critical operations rooms to monitor real-time hydrological flood risks, industrial stack emission plumes, and geotechnical landslide slope stability through a simulated IoT sensor mesh.
+
+> [!NOTE]
+> **DEMO ENVIRONMENT — Sensor values are simulated**  
+> All sensor telemetry, gateway packets, and risk probabilities displayed are generated by high-fidelity simulation models for prototyping and evaluation. Real-world sensor deployments require hardware calibration, antenna field testing, and site-specific geotechnical ground-truthing.
+
+---
+
+## Architecture & Technology Stack
+
+- **Frontend Core**: React 19, TypeScript 5.8, JavaScript (ES Modules)
+- **Tooling & Dev Server**: Vite 8, Nitro Server Engine
+- **Styling**: Tailwind CSS v4 (theme inline design tokens, OKLCH color spaces, custom utilities)
+- **Routing**: `@tanstack/react-router` (type-safe file-based routing with layout shells and dynamic detail routes)
+- **Data Visualizations**: Recharts 2.15 (custom dark-mode area charts, multi-metric line plots, and distribution donuts)
+- **Iconography**: Lucide React
+- **Component Primitives**: Radix UI primitives & custom command-center UI library
+- **Mock State Architecture**: Centralized data mesh (`src/data/mockData.ts`) powering all 35 connected nodes, alerts, health telemetry, and multi-timeframe analytics without external backend dependencies
+
+---
+
+## Design System & Operational Aesthetics
+
+The interface is purpose-built as an operational monitoring command center, steering away from generic administrative templates.
+
+### Color Palette (OKLCH Tokens)
+| Role | Color | Hex Reference | Application |
+| :--- | :--- | :--- | :--- |
+| **Background** | `oklch(0.129 0.041 264.7)` | `#020617` | Command room dark canvas |
+| **Cards / Panels** | `oklch(0.208 0.04 265.8)` | `#0f172a` | Elevated surface containers |
+| **Borders** | `oklch(0.279 0.037 260)` | `#1e293b` | Structural dividers & rings |
+| **Primary Accent** | `oklch(0.797 0.134 211.5)` | `#22d3ee` | Cyan telemetry glow & active states |
+| **Secondary Accent** | `oklch(0.627 0.233 303.9)` | `#a855f7` | Purple industrial & AI indicators |
+| **Normal / Safe** | `oklch(0.723 0.192 149.6)` | `#10b981` | Nominal telemetry status |
+| **Watch** | `oklch(0.795 0.162 86)` | `#eab308` | Baseline anomaly advisory |
+| **Warning** | `oklch(0.705 0.187 47.6)` | `#f97316` | Approaching safety thresholds |
+| **Critical / Emergency** | `oklch(0.637 0.208 25.3)` | `#ef4444` | Hazardous limit breach |
+
+### Typography
+- **Display**: Space Grotesk (headers and KPI figures)
+- **Sans**: DM Sans (body and telemetry labels)
+- **Mono**: JetBrains Mono (hardware IDs, numeric telemetry, coordinates, and timestamps)
+
+---
+
+## Core Monitoring Domains
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      ENVIRONMENTAL SENSOR MESH (35 NODES)                   │
+├───────────────────────┬─────────────────────────────┬───────────────────────┤
+│    🌊 RIVER BASIN     │    🏭 INDUSTRIAL ZONES      │   ⛰ GEOTECHNICAL     │
+│       12 NODES        │          8 NODES            │       15 NODES        │
+├───────────────────────┼─────────────────────────────┼───────────────────────┤
+│ • Water Level (m)     │ • Particulate (PM2.5/PM10)  │ • Cumulative Rainfall │
+│ • Rate of Rise (m/h)  │ • Toxic Gases (VOC/SO2/NO2) │ • Soil Moisture Vol % │
+│ • Rainfall (24h)      │ • Stack Thermal Plumes      │ • Tilt Angle & Rate   │
+│ • Water pH & Turbidity│ • Relative Humidity         │ • Seismic Vibration g │
+│ • TDS / Conductivity  │ • Rolling Moving Averages   │ • Acoustic Creep      │
+│ • Flood Risk Score    │ • Pollution Risk Score      │ • Landslide Risk Score│
+│ Alert: SAFE -> CRIT   │ Alert: NORMAL -> EMERGENCY  │ Alert: LOW -> HIGH    │
+└───────────────────────┴─────────────────────────────┴───────────────────────┘
+```
+
+### 1. River Monitoring
+- **Stations**: River Node 01 through River Node 12 across Upper Valley Gorge, Pine Creek Basin, Cataract Falls, and Lower Estuary.
+- **Telemetry**: Water Level, Rate of Rise, 24h Rainfall, pH, Turbidity, Total Dissolved Solids (TDS), Water Temperature.
+- **Edge AI Risk Assessment**: Synthesizes localized bankfull threshold proximity (35%), rise velocity (30%), catchment rainfall volume (20%), and seasonal deviation (15%).
+
+### 2. Industrial Monitoring
+- **Stations**: Industrial Node 01 through Industrial Node 08 across Chemical Corridors, Smelting Works, and Refinery Berths.
+- **Telemetry**: Fine Particulate (PM2.5), Coarse Dust (PM10), Chemical Gas Concentration (VOC, SO2, Benzene, NOx, H2S in ppb), Temperature, Humidity.
+- **Alert Assessment**: Continuously evaluates regulatory threshold checks, rate of change derivative, consecutive hourly persistence, and 8-hour rolling moving average exposure.
+
+### 3. Landslide Monitoring
+- **Stations**: Landslide Node 01 through Landslide Node 15 along alpine passes, escarpments, cut-slopes, and tunnel headwalls.
+- **Telemetry**: Precipitation Infiltration, Volumetric Soil Moisture (%), Inclinometer Tilt Deviation (° and °/h rate), Seismic Micro-Vibration (g acceleration).
+- **Multi-Sensor AI Fusion**: Executes edge-inference fusion formula:
+  $$\text{Instability Risk} = f(\text{Rainfall} \times \text{Soil Moisture} \times \text{Tilt} \times \text{Vibration} \times \text{Ambient})$$
+
+---
+
+## Application Route Map
+
+| Route | View | Description |
+| :--- | :--- | :--- |
+| `/` | Redirect | Automatic redirect to `/dashboard` |
+| `/dashboard` | Command Center Overview | High-level summary cards, node category distribution, live mini map, risk overview, and recent alert feed |
+| `/live-map` | Geospatial Map | Full-screen interactive map with radar sweep, layer filters (River, Industrial, Landslide), severity pins, zoom controls, and telemetry popup inspection cards |
+| `/river-nodes` | River Network Directory | Summary metrics, search, alert filters, and table/grid view of 12 hydrometric river stations |
+| `/river-nodes/:id` | River Node Detail | Deep station telemetry, 4 Recharts trend curves (Water Level, Rainfall, Risk, Water Quality), and Edge AI Risk Assessment panel |
+| `/industrial-nodes` | Industrial Directory | Emissions summary, particulate benchmarks, search, and table/grid view of 8 industrial monitoring nodes |
+| `/industrial-nodes/:id` | Industrial Node Detail | Gas concentration indicators, PM2.5/PM10 trend plots, and continuous alert evaluation breakdown |
+| `/landslide-nodes` | Landslide Directory | Slope stability metrics, inclinometer tilt rates, search, and table/grid view of 15 geotechnical nodes |
+| `/landslide-nodes/:id` | Landslide Node Detail | Geotechnical telemetry, soil pore-water saturation plots, micro-vibration graphs, and Multi-Sensor AI Fusion panel |
+| `/alerts` | Alert Center | Active, critical, warning, and watch incident center with live filter tabs, interactive acknowledgment toggle, and standard operating procedure modal |
+| `/analytics` | Predictive Analytics | Timeframe switcher (24h, 7d, 30d), cross-domain multi-metric risk trajectory charts, hazard distribution donuts, and environmental trend reports |
+| `/node-health` | Hardware Telemetry | Telemetry table for all 35 nodes showing battery percentage gauges, signal strength (dBm), LoRa gateways, packet loss, and uptime |
+| `/history` | Historical Telemetry Archive | Multi-facet filter engine (Category, Metric, Severity, Search), historical sparkline trend, and paginated records table |
+| `/settings` | System Settings | Client-side controls for Dark Mode, Auto-Refresh (30s), Compact Dashboard, Alert Subscriptions, and Map Display Overlays |
+
+---
+
+## Component Architecture
+
+```
+client/src/
 ├── components/
 │   ├── layout/
-│   │   ├── Sidebar.tsx
-│   │   └── Header.tsx
-│   │
+│   │   ├── Sidebar.tsx            # Responsive collapsible sidebar navigation
+│   │   ├── Header.tsx             # Sticky header with alert dropdown & system status
+│   │   └── DashboardLayout.tsx    # Shell wrapper with dynamic route title resolver
 │   ├── dashboard/
-│   │   ├── StatCard.tsx
-│   │   ├── NodeTypeCard.tsx
-│   │   ├── RiskOverview.tsx
-│   │   ├── LiveRiskMap.tsx
-│   │   └── RecentAlerts.tsx
-│   │
+│   │   ├── StatCard.tsx           # KPI card with trend badges
+│   │   ├── NodeTypeCard.tsx       # Domain category summary card
+│   │   ├── RiskOverview.tsx       # Composite hazard index bars
+│   │   ├── LiveRiskMap.tsx        # Dashboard map widget
+│   │   └── RecentAlerts.tsx       # Live incident feed
+│   ├── nodes/
+│   │   ├── SensorCard.tsx         # Telemetry readout card with threshold indicator
+│   │   ├── NodeFilters.tsx        # Search, status filter, sort, and grid/table toggle
+│   │   └── RiskAssessmentPanel.tsx# Edge AI fusion & alert assessment breakdown
+│   ├── charts/
+│   │   ├── SensorTrendChart.tsx   # Recharts AreaChart with dark gradient & thresholds
+│   │   ├── MultiMetricChart.tsx   # Recharts LineChart for multi-parameter comparison
+│   │   └── AlertDistributionChart.tsx # Recharts Donut distribution chart
 │   └── common/
-│       ├── StatusBadge.tsx
-│       └── RiskBadge.tsx
-│
+│       ├── StatusBadge.tsx        # Severity pill badge with pulse dots
+│       ├── RiskBadge.tsx          # Progress risk bar with percentage
+│       ├── BatteryIndicator.tsx   # Dynamic battery level icon & percentage
+│       ├── SignalIndicator.tsx    # Multi-bar RSSI signal & dBm readout
+│       └── DemoBadge.tsx          # Consistent simulated data notice badge
 ├── pages/
-│   └── Dashboard.tsx
-│
+│   ├── Dashboard.tsx
+│   ├── LiveMap.tsx
+│   ├── Alerts.tsx
+│   ├── Analytics.tsx
+│   ├── NodeHealth.tsx
+│   ├── History.tsx
+│   ├── Settings.tsx
+│   ├── NotFound.tsx
+│   ├── river/
+│   │   ├── RiverNodes.tsx
+│   │   └── RiverNodeDetail.tsx
+│   ├── industrial/
+│   │   ├── IndustrialNodes.tsx
+│   │   └── IndustrialNodeDetail.tsx
+│   └── landslide/
+│       ├── LandslideNodes.tsx
+│       └── LandslideNodeDetail.tsx
 ├── data/
-│   └── mockData.ts
-│
-├── types/
-│   └── node.ts
-│
-└── App.tsx
-
-
-Keep the architecture clean because additional pages will be added later.
-
-MOCK DATA
-
-Create centralized mock data in:
-
-src/data/mockData.ts
-
-
-Do not hard-code repeated values directly inside components.
-
-Use realistic but clearly simulated data.
-
-Add:
-
-DEMO ENVIRONMENT
-Sensor values are simulated
-
-
-somewhere unobtrusive in the dashboard.
-
-IMPORTANT
-
-Do NOT build:
-
-River detail page
-
-Industrial detail page
-
-Landslide detail page
-
-Analytics page
-
-History page
-
-Node Health page
-
-Full Alert Center
-
-Backend
-
-MQTT
-
-Database
-
-Authentication
-
-WebSocket
-
-Those will be implemented in later steps.
-
-For this generation, prioritize:
-
-Excellent visual design
-
-Dashboard layout
-
-Sidebar
-
-Header
-
-Summary cards
-
-Node type cards
-
-Risk overview
-
-Recent alerts
-
-Map/Map placeholder
-
-Responsive behavior
-
-Clean reusable React components
-
-Make the result feel like a real environmental disaster monitoring command center, not a template.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/7ded2146-1294-4e27-ae8e-f1eb1088a6fc).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+│   └── mockData.ts                # Centralized simulated datasets for 35 nodes
+├── routes/                        # TanStack Router file-based route definitions
+└── types/
+    └── node.ts                    # TypeScript interface definitions
 ```
+
+---
+
+## Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (version 18.0 or higher recommended)
+- `npm` or `bun`
+
+### Installation & Setup
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd ai-environmental-monitor/client
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to:
+   ```
+   http://localhost:8080/
+   ```
+
+### Validation Scripts
+
+- **Typecheck**:
+  ```bash
+  npx tsc --noEmit
+  ```
+- **Production Build**:
+  ```bash
+  npm run build
+  ```
+- **Preview Production Bundle**:
+  ```bash
+  npm run preview
+  ```
+
+---
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
