@@ -1,0 +1,15 @@
+{
+  "name": "neerkaappan-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": ["client"],
+  "scripts": {
+    "dev": "cd client && bun run dev",
+    "build": "cd client && bun run build && rm -rf ../dist && cp -r dist ../dist",
+    "build:dev": "cd client && bun run build:dev && rm -rf ../dist && cp -r dist ../dist",
+    "preview": "cd client && bun run preview",
+    "lint": "cd client && bun run lint",
+    "format": "cd client && bun run format"
+  },
+  "overrides": { "rolldown": "1.2.1" }
+}
