@@ -32,7 +32,7 @@ const legendItems = [
 ];
 
 export function ForestRiskMap({ onSelectNode }: ForestRiskMapProps) {
-  const [selectedNode, setSelectedNode] = useState<ForestNode>(forestNodes[3] ?? forestNodes[0]); // Default to FN-04 (Critical)
+  const [selectedNode, setSelectedNode] = useState<ForestNode>(forestNodes[3] ?? forestNodes[0]!); // Default to FN-04 (Critical)
 
   const handleMarkerClick = (node: ForestNode) => {
     setSelectedNode(node);
