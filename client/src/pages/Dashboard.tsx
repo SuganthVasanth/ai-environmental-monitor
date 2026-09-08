@@ -6,6 +6,7 @@ import {
   Mountain,
   Network,
   ShieldAlert,
+  TreePine,
   Waves,
 } from "lucide-react";
 import { StatCard } from "@/components/dashboard/StatCard";
@@ -16,7 +17,7 @@ import { RecentAlerts } from "@/components/dashboard/RecentAlerts";
 import { DEMO_NOTICE, nodeTypeSummaries, summaryStats } from "@/data/mockData";
 
 const statIcons = [Network, AlertTriangle, ShieldAlert, Activity];
-const typeIcons = { river: Waves, industrial: Factory, landslide: Mountain };
+const typeIcons = { river: Waves, industrial: Factory, landslide: Mountain, forest: TreePine };
 
 export function Dashboard() {
   return (
@@ -45,7 +46,7 @@ export function Dashboard() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {nodeTypeSummaries.map((summary) => (
           <NodeTypeCard key={summary.id} summary={summary} icon={typeIcons[summary.id]} />
         ))}

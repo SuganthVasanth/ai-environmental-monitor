@@ -1,10 +1,11 @@
 export type Severity = "normal" | "watch" | "warning" | "critical";
 
-export type NodeCategory = "river" | "industrial" | "landslide";
+export type NodeCategory = "river" | "industrial" | "landslide" | "forest";
 
 export type RiverAlertLevel = "SAFE" | "WATCH" | "WARNING" | "CRITICAL";
 export type IndustrialAlertLevel = "NORMAL" | "WATCH" | "WARNING" | "EMERGENCY";
 export type LandslideAlertLevel = "LOW" | "WATCH" | "WARNING" | "HIGH";
+export type ForestAlertLevel = "NORMAL" | "WATCH" | "WARNING" | "CRITICAL";
 
 export interface TimeSeriesPoint {
   time: string;
@@ -129,6 +130,35 @@ export interface LandslideNode {
     soilMoisture: TimeSeriesPoint[];
     tilt: TimeSeriesPoint[];
     vibration: TimeSeriesPoint[];
+    risk: TimeSeriesPoint[];
+  };
+}
+
+export interface ForestNode {
+  id: string;
+  name: string;
+  location: string;
+  coordinates: { lat: number; lng: number; x: number; y: number };
+  temperature: number; // °C
+  humidity: number; // %
+  smoke: "Low" | "Moderate" | "High" | "Very High";
+  pm25: number; // µg/m³
+  gasConcentration: string; // e.g. "Normal", "Elevated", "Critical"
+  rainfall: string; // e.g. "None", "Low", "Moderate"
+  fireRisk: number; // 0-100%
+  confidence: number; // 0-100%
+  alertLevel: ForestAlertLevel;
+  severity: Severity;
+  battery: number; // %
+  connectivity: "LoRaWAN Mesh" | "Cellular NB-IoT" | "Satellite Link";
+  signalDbm: number;
+  gatewayId: string;
+  lastUpdate: string;
+  sensorHealth: string;
+  trends: {
+    temperature: TimeSeriesPoint[];
+    humidity: TimeSeriesPoint[];
+    smokePm25: TimeSeriesPoint[];
     risk: TimeSeriesPoint[];
   };
 }

@@ -126,6 +126,7 @@ export function History() {
               <option value="river">River</option>
               <option value="industrial">Industrial</option>
               <option value="landslide">Landslide</option>
+              <option value="forest">Forest</option>
             </select>
 
             {/* Metric */}

@@ -71,6 +71,7 @@ export function Alerts() {
     if (!nodeId) return "/dashboard";
     if (category === "river") return `/river-nodes/${nodeId}`;
     if (category === "industrial") return `/industrial-nodes/${nodeId}`;
+    if (category === "forest") return `/forest-nodes`;
     return `/landslide-nodes/${nodeId}`;
   };
 

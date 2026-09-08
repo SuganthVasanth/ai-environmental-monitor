@@ -14,6 +14,7 @@ import { Route as ShellRouteImport } from './routes/_shell'
 import { Route as ShellAlertsRouteImport } from './routes/_shell.alerts'
 import { Route as ShellAnalyticsRouteImport } from './routes/_shell.analytics'
 import { Route as ShellDashboardRouteImport } from './routes/_shell.dashboard'
+import { Route as ShellForestNodesRouteImport } from './routes/_shell.forest-nodes'
 import { Route as ShellHistoryRouteImport } from './routes/_shell.history'
 import { Route as ShellIndustrialNodesRouteImport } from './routes/_shell.industrial-nodes'
 import { Route as ShellLandslideNodesRouteImport } from './routes/_shell.landslide-nodes'
@@ -47,6 +48,11 @@ const ShellAnalyticsRoute = ShellAnalyticsRouteImport.update({
 const ShellDashboardRoute = ShellDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellForestNodesRoute = ShellForestNodesRouteImport.update({
+  id: '/forest-nodes',
+  path: '/forest-nodes',
   getParentRoute: () => ShellRoute,
 } as any)
 const ShellHistoryRoute = ShellHistoryRouteImport.update({
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/alerts': typeof ShellAlertsRoute
   '/analytics': typeof ShellAnalyticsRoute
   '/dashboard': typeof ShellDashboardRoute
+  '/forest-nodes': typeof ShellForestNodesRoute
   '/history': typeof ShellHistoryRoute
   '/industrial-nodes': typeof ShellIndustrialNodesRouteWithChildren
   '/landslide-nodes': typeof ShellLandslideNodesRouteWithChildren
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/alerts': typeof ShellAlertsRoute
   '/analytics': typeof ShellAnalyticsRoute
   '/dashboard': typeof ShellDashboardRoute
+  '/forest-nodes': typeof ShellForestNodesRoute
   '/history': typeof ShellHistoryRoute
   '/industrial-nodes': typeof ShellIndustrialNodesRouteWithChildren
   '/landslide-nodes': typeof ShellLandslideNodesRouteWithChildren
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   '/_shell/alerts': typeof ShellAlertsRoute
   '/_shell/analytics': typeof ShellAnalyticsRoute
   '/_shell/dashboard': typeof ShellDashboardRoute
+  '/_shell/forest-nodes': typeof ShellForestNodesRoute
   '/_shell/history': typeof ShellHistoryRoute
   '/_shell/industrial-nodes': typeof ShellIndustrialNodesRouteWithChildren
   '/_shell/landslide-nodes': typeof ShellLandslideNodesRouteWithChildren
@@ -157,6 +166,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dashboard'
+    | '/forest-nodes'
     | '/history'
     | '/industrial-nodes'
     | '/landslide-nodes'
@@ -173,6 +183,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dashboard'
+    | '/forest-nodes'
     | '/history'
     | '/industrial-nodes'
     | '/landslide-nodes'
@@ -190,6 +201,7 @@ export interface FileRouteTypes {
     | '/_shell/alerts'
     | '/_shell/analytics'
     | '/_shell/dashboard'
+    | '/_shell/forest-nodes'
     | '/_shell/history'
     | '/_shell/industrial-nodes'
     | '/_shell/landslide-nodes'
@@ -242,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof ShellDashboardRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/forest-nodes': {
+      id: '/_shell/forest-nodes'
+      path: '/forest-nodes'
+      fullPath: '/forest-nodes'
+      preLoaderRoute: typeof ShellForestNodesRouteImport
       parentRoute: typeof ShellRoute
     }
     '/_shell/history': {
@@ -355,6 +374,7 @@ interface ShellRouteChildren {
   ShellAlertsRoute: typeof ShellAlertsRoute
   ShellAnalyticsRoute: typeof ShellAnalyticsRoute
   ShellDashboardRoute: typeof ShellDashboardRoute
+  ShellForestNodesRoute: typeof ShellForestNodesRoute
   ShellHistoryRoute: typeof ShellHistoryRoute
   ShellIndustrialNodesRoute: typeof ShellIndustrialNodesRouteWithChildren
   ShellLandslideNodesRoute: typeof ShellLandslideNodesRouteWithChildren
@@ -368,6 +388,7 @@ const ShellRouteChildren: ShellRouteChildren = {
   ShellAlertsRoute: ShellAlertsRoute,
   ShellAnalyticsRoute: ShellAnalyticsRoute,
   ShellDashboardRoute: ShellDashboardRoute,
+  ShellForestNodesRoute: ShellForestNodesRoute,
   ShellHistoryRoute: ShellHistoryRoute,
   ShellIndustrialNodesRoute: ShellIndustrialNodesRouteWithChildren,
   ShellLandslideNodesRoute: ShellLandslideNodesRouteWithChildren,

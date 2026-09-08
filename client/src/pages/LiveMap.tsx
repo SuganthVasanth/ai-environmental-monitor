@@ -9,6 +9,7 @@ import {
   Mountain,
   Navigation,
   SlidersHorizontal,
+  TreePine,
   Waves,
   X,
   ZoomIn,
@@ -25,12 +26,14 @@ const categoryIcon: Record<NodeCategory, typeof Waves> = {
   river: Waves,
   industrial: Factory,
   landslide: Mountain,
+  forest: TreePine,
 };
 
 const categoryColor: Record<NodeCategory, string> = {
   river: "text-primary border-primary/40 bg-primary/10",
   industrial: "text-secondary border-secondary/40 bg-secondary/10",
   landslide: "text-watch border-watch/40 bg-watch/10",
+  forest: "text-warning border-warning/40 bg-warning/10",
 };
 
 const markerTone: Record<Severity, string> = {
@@ -64,6 +67,7 @@ export function LiveMap() {
   const getNodeDetailUrl = (node: MapNode) => {
     if (node.category === "river") return `/river-nodes/${node.id}`;
     if (node.category === "industrial") return `/industrial-nodes/${node.id}`;
+    if (node.category === "forest") return `/forest-nodes`;
     return `/landslide-nodes/${node.id}`;
   };
 
@@ -92,6 +96,7 @@ export function LiveMap() {
               { id: "river", label: "River", icon: Waves },
               { id: "industrial", label: "Industrial", icon: Factory },
               { id: "landslide", label: "Landslide", icon: Mountain },
+              { id: "forest", label: "Forest", icon: TreePine },
             ] as const
           ).map((cat) => {
             const Icon = "icon" in cat ? cat.icon : null;

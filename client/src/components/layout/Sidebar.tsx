@@ -12,6 +12,7 @@ import {
   PanelLeftOpen,
   Radio,
   Settings,
+  TreePine,
   Waves,
   X,
 } from "lucide-react";
@@ -29,6 +30,7 @@ const sections = [
       { to: "/river-nodes", label: "River Nodes", icon: Waves },
       { to: "/industrial-nodes", label: "Industrial Nodes", icon: Factory },
       { to: "/landslide-nodes", label: "Landslide Nodes", icon: Mountain },
+      { to: "/forest-nodes", label: "Forest Nodes", icon: TreePine },
     ],
   },
   {

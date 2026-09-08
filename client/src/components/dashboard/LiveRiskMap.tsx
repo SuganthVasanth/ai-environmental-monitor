@@ -1,9 +1,9 @@
-import { Map as MapIcon, Waves, Factory, Mountain } from "lucide-react";
+import { Map as MapIcon, Waves, Factory, Mountain, TreePine } from "lucide-react";
 import { mapNodes } from "@/data/mockData";
 import type { NodeCategory, Severity } from "@/types/node";
 import { cn } from "@/lib/utils";
 
-const categoryIcon = { river: Waves, industrial: Factory, landslide: Mountain };
+const categoryIcon = { river: Waves, industrial: Factory, landslide: Mountain, forest: TreePine };
 
 const markerTone: Record<Severity, string> = {
   normal: "bg-normal/15 text-normal ring-normal/50",
